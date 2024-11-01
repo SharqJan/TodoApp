@@ -1,0 +1,36 @@
+<div class="container">
+    <h3>
+        My deleted todos
+    </h3>
+    <div class="row ">
+        <h1>
+            My Todos
+        </h1>
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col ">Description</th>
+                    <th scope="col ">Created DateTime</th>
+                    <th scope="col ">Deleted DateTime</th>
+                    <th scope="col ">Completed</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos ">
+                    <th [class.stroke]="todo.isCompleted">{{todo.description}}</th>
+
+                    <td>{{todo.createdDateTime | date: 'MM/dd/yyyy hh:mm:ss a'}}</td>
+                    <td>{{todo.deletedDateTime | date: 'MM/dd/yyyy hh:mm:ss a'}}</td>
+                    <td>{{todo.isCompleted}}</td>
+
+                    <td>
+
+                        <a [routerLink]="[]" (click)="undoDeleteTodo(todo.id, todo)">Undo</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
